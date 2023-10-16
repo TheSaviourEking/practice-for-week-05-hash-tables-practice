@@ -47,7 +47,6 @@ class HashTable {
       keyValuePair.next = this.data[hash];
     }
     this.data[hash] = keyValuePair;
-
     this.count++;
   }
 
@@ -70,32 +69,6 @@ class HashTable {
     this.data[hash] = keyValuePair;
     this.count++;
   }
-
-
-
 }
 
-let hashTable = new HashTable(2);
-// hashTable.hash('A');
-// hashTable.insertWithHashCollisions("key-1", "val-1");
-// hashTable.insertWithHashCollisions("key-2", "val-2");
-// hashTable.insertWithHashCollisions("key-3", "val-3");
-// hashTable.insertWithHashCollisions("key-1", "val-1000");
-hashTable.insert("key-1", "val-1");
-hashTable.insert("key-2", "val-2");
-hashTable.insert("key-3", "val-3");
-hashTable.insert("key-1", "val-100000");
-
-console.log(hashTable.count); // 3
-console.log(hashTable.capacity); // 2
-console.log(hashTable.data.length) // 2
-// hashTable.insertNoCollisions("key-3", "val-3");
-const pairC = hashTable.data[0];
-const pairB = hashTable.data[1];
-const pairA = hashTable.data[0].next;
-
-// console.log(pairA.key, pairA.value)
-// console.log(hashTable.data[0].next)
-console.log(hashTable.data[0])
-console.log(hashTable)
 module.exports = HashTable;
