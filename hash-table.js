@@ -40,12 +40,9 @@ class HashTable {
   insertWithHashCollisions(key, value) {
     // Your code here
     let keyValuePair = new KeyValuePair(key, value);
-    let hash = this.hashMod(key);
-    console.log(hash, 'HASH')
-    if (this.data[hash] !== null) {
-      keyValuePair.next = this.data[hash];
-    }
-    this.data[hash] = keyValuePair;
+    let hashIdx = this.hashMod(key);
+    if (this.data[hashIdx]) keyValuePair.next = this.data[hashIdx];
+    this.data[hashIdx] = keyValuePair;
     this.count++;
   }
 
