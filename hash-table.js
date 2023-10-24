@@ -47,12 +47,11 @@ class HashTable {
   }
 
   insert(key, value) {
-    // Your code here
+    let hashIdx = this.hashMod(key);
     let keyValuePair = new KeyValuePair(key, value);
-    let hash = this.hashMod(key);
-    // console.log(hash, 'HASH')
-    if (this.data[hash] !== null) {
-      let current = this.data[hash];
+    let current = this.data[hashIdx];
+
+    if (current) {
       while (current) {
         if (current.key === keyValuePair.key) {
           current.value = keyValuePair.value;
@@ -60,9 +59,10 @@ class HashTable {
         }
         current = current.next;
       }
-      keyValuePair.next = this.data[hash];
+      keyValuePair.next = this.data[hashIdx];
     }
-    this.data[hash] = keyValuePair;
+
+    this.data[hashIdx] = keyValuePair;
     this.count++;
   }
 }
